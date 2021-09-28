@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 14:08:20 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/09/27 14:14:54 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/09/28 11:52:16 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class	Fixed
 		Fixed();
 		~Fixed();
 		// A copy constructor
-		// An assignation operator overload
+		Fixed & operator=( Fixed const & rhs);
 		int getRawBits( void ) const;
 		void setRawBits( int const raw );
 
