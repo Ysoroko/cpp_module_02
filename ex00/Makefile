@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/27 14:07:34 by ysoroko           #+#    #+#              #
-#    Updated: 2021/09/27 14:08:36 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/09/28 15:49:02 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,9 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(COMPILE) $(FLAGS) $(OBJS) $(EXE_NAME)
 
+run: $(NAME)
+	./$(NAME)
+
 clean:
 	rm -rf $(OBJS)
 
@@ -45,4 +48,4 @@ re:	fclean all
 .cpp.o:
 	${COMPILE} ${FLAGS} -c $< -o ${<:.cpp=.o}
 
-.PHONY:	all clean fclean re
+.PHONY:	all clean fclean re run
