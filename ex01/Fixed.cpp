@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 14:08:17 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/09/28 16:52:43 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/09/29 14:54:18 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ Fixed & Fixed::operator=( Fixed const & rhs)
 Fixed::Fixed(int int_arg)
 {
 	std::cout << "Int constructor called" << std::endl;
-	this->fixed_point_value = int_arg;
+	this->fixed_point_value = int_arg << this->n_fract_bits;
 }
 
 Fixed::Fixed(float float_arg)
