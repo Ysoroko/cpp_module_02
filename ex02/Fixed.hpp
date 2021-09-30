@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 14:08:20 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/09/30 14:21:56 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/09/30 15:42:47 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,21 @@ class	Fixed
 		Fixed operator*( Fixed const & rhs) const;
 		Fixed operator/( Fixed const & rhs) const;
 
+		// ++F F++ --F F--
+		Fixed & operator++( void ); // Prefix (++F)
+		Fixed & operator--( void ); // Prefix (--F)
+		Fixed & operator++( int n ); // Postfix (F++)
+		Fixed & operator--( int n ); // Postfix (F--)
+
+		// min & max
+		static Fixed min(const Fixed & a, const Fixed & b );
+		static Fixed max(const Fixed & a, const Fixed & b );
+
 	private:
 		int	fixed_point_value;
 		static const int n_fract_bits = 8;
 };
 
 std::ostream & operator<<( std::ostream & o, Fixed const & rhs);
-
 
 #endif

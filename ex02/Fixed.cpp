@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 14:08:17 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/09/30 14:22:29 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/09/30 15:44:24 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,3 +193,52 @@ Fixed Fixed::operator/( Fixed const & rhs) const
 }
 
 //----------------
+
+// F++ ++F F-- --F
+Fixed & Fixed::operator++( void ) // Prefix (++F)
+{
+	this->setRawBits(this->getRawBits() + 1);
+	return (*this);
+}
+
+Fixed & Fixed::operator--( void ) // Prefix (--F)
+{
+	this->setRawBits(this->getRawBits() - 1);
+	return (*this);
+}
+
+Fixed & Fixed::operator++( int n ) // Postfix (F++)
+{
+	if (!n)
+		this->setRawBits(this->getRawBits() + 1);
+	else
+		this->setRawBits(this->getRawBits() + n);
+	return (*this);
+}
+
+Fixed & Fixed::operator--( int n ) // Postfix (F--)
+{
+	if (!n)
+		this->setRawBits(this->getRawBits() - 1);
+	else
+		this->setRawBits(this->getRawBits() - n);
+	return (*this);
+}
+
+//-----------------
+
+// min & max
+
+Fixed Fixed::min(const Fixed & a, const Fixed & b)
+{
+	if (a.getRawBits() < b.getRawBits())
+		return (a);
+	return (b);
+}
+	
+Fixed Fixed::max(const Fixed & a, const Fixed & b)
+{
+	if (a.getRawBits() > b.getRawBits())
+		return (a);
+	return (b);
+}
