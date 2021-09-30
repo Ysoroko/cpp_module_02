@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 14:08:20 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/09/30 14:12:22 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/09/30 14:21:56 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,10 @@ class	Fixed
 		int operator!=( Fixed const & rhs) const;
 		
 		// + - * /
+		Fixed operator+( Fixed const & rhs) const;
+		Fixed operator-( Fixed const & rhs) const;
+		Fixed operator*( Fixed const & rhs) const;
+		Fixed operator/( Fixed const & rhs) const;
 
 	private:
 		int	fixed_point_value;

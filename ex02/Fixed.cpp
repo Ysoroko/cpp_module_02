@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 14:08:17 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/09/30 14:12:29 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/09/30 14:22:29 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,7 @@ std::ostream & operator<<( std::ostream & o, Fixed const & rhs)
 // EX 02
 //-----------------------------------------------------------------------------------
 
+// > < >= <= == !=
 int Fixed::operator>( Fixed const & rhs) const
 {
 	if (this->getRawBits() > rhs.getRawBits())
@@ -160,3 +161,35 @@ int Fixed::operator!=( Fixed const & rhs) const
 		return (1);
 	return (0);
 }
+//----------------
+
+// + - * /
+Fixed Fixed::operator+( Fixed const & rhs) const
+{
+	Fixed ret(this->getRawBits() + rhs.getRawBits());
+	
+	return (ret);
+}
+
+Fixed Fixed::operator-( Fixed const & rhs) const
+{
+	Fixed ret(this->getRawBits() - rhs.getRawBits());
+	
+	return (ret);
+}
+
+Fixed Fixed::operator*( Fixed const & rhs) const
+{
+	Fixed ret(this->getRawBits() * rhs.getRawBits());
+	
+	return (ret);
+}
+
+Fixed Fixed::operator/( Fixed const & rhs) const
+{
+	Fixed ret(this->getRawBits() / rhs.getRawBits());
+	
+	return (ret);
+}
+
+//----------------
