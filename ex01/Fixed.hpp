@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 14:08:20 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/09/28 16:38:50 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/09/30 13:59:08 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,9 @@
 class	Fixed
 {
 	public:
+		// EX 00
 		Fixed();
 		~Fixed();
-
-		Fixed(int const int_arg);
-		Fixed(float const float_arg);
-
-		float toFloat(void) const;
-		int toInt(void) const;
 
 		// A copy constructor
 		// A constructor which allows to create a copy of a different instance
@@ -45,7 +40,14 @@ class	Fixed
 		Fixed & operator=( Fixed const & rhs);
 		int getRawBits( void ) const;
 		void setRawBits( int const raw );
+//-----------------------------------------------------------------------------------
+		// EX 01
+		Fixed(int const int_arg);
+		Fixed(float const float_arg);
 
+		float toFloat(void) const;
+		int toInt(void) const;
+//-----------------------------------------------------------------------------------
 	private:
 		int	fixed_point_value;
 		static const int n_fract_bits = 8;
