@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 14:08:17 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/09/30 16:09:28 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/09/30 16:47:26 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,32 +197,30 @@ Fixed Fixed::operator/( Fixed const & rhs) const
 // F++ ++F F-- --F
 Fixed & Fixed::operator++( void ) // Prefix (++F)
 {
-	++(this->fixed_point_value);
+	this->fixed_point_value -= 1;
 	return (*this);
 }
 
 Fixed & Fixed::operator--( void ) // Prefix (--F)
 {
-	--(this->fixed_point_value);
+	this->fixed_point_value -= 1;
 	return (*this);
 }
 
-Fixed & Fixed::operator++( int n ) // Postfix (F++)
+Fixed Fixed::operator++( int ) // Postfix (F++)
 {
-	if (!n)
-		this->fixed_point_value++;
-	else
-		this->fixed_point_value+=n;
-	return (*this);
+	Fixed	temp = *this;
+
+	(this->fixed_point_value) +=1 ;
+	return (temp);
 }
 
-Fixed & Fixed::operator--( int n ) // Postfix (F--)
+Fixed Fixed::operator--( int ) // Postfix (F--)
 {
-	if (!n)
-		this->fixed_point_value--;
-	else
-		this->fixed_point_value-=n;
-	return (*this);
+	Fixed	temp = *this;
+
+	(this->fixed_point_value) -=1 ;
+	return (temp);
 }
 
 //-----------------
