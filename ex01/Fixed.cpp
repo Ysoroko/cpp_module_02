@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 14:08:17 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/09/30 11:03:04 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/09/30 12:04:20 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ Fixed & Fixed::operator=( Fixed const & rhs)
 Fixed::Fixed(int int_arg)
 {
 	std::cout << "Int constructor called" << std::endl;
-	setRawBits(int_arg);
+	setRawBits(int_arg << this->n_fract_bits);
 }
 
 // FLOAT constructor
@@ -97,18 +97,17 @@ Fixed::Fixed(int int_arg)
 // Store the rounded x in an integer container
 Fixed::Fixed(float float_arg)
 {
-	float	x = float_arg * (2^(this->n_fract_bits));
-	int		y = roundf(x);
-
-	this->setRawBits(y);
 	std::cout << "Float constructor called" << std::endl;
-	this->fixed_point_value = static_cast<int>(float_arg);
+	this->setRawBits((int)roundf(float_arg * (1 << this->n_fract_bits)));
 }
 
 // We take the input value and divide it by (2fractional_bits), putting the result into a float
 float Fixed::toFloat(void) const
 {
-	return ((double)this->getRawBits() / (double)(1 << this->n_fract_bits));
+	float	f;
+
+	f = (float)this->getRawBits() / (1 << this->n_fract_bits);
+	return (f);
 }
 
 //fix >> FIXED_POINT
@@ -120,13 +119,9 @@ int Fixed::toInt(void) const
 // << operator overload (not a member function!)
 std::ostream & operator<<( std::ostream & o, Fixed const & rhs)
 {
-	std::string dot = "";
-	std::string str = "";
-	if (rhs.toInt())
-	{
-		dot = ".";
-		str = std::to_string(rhs.toInt());
-	}
-	o << rhs.getRawBits() << dot << str;
+	o << rhs.toFloat();
+	//std::cout << std:: endl << "RAW: " << rhs.getRawBits() << std::endl;
+	//std::cout << std:: endl << "TOINT: " << rhs.toInt() << std::endl;
+	//std::cout << std:: endl << "TOFLOAT: " << rhs.toFloat() << std::endl;
 	return (o);
 }
