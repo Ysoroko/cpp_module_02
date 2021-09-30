@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 14:08:20 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/09/30 13:58:41 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/09/30 14:12:22 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,15 @@ class	Fixed
 		int toInt(void) const;
 //-----------------------------------------------------------------------------------
 		// EX 02
+		// > < >= <= == !=
+		int operator>( Fixed const & rhs) const;
+		int operator<( Fixed const & rhs) const;
+		int operator>=( Fixed const & rhs) const;
+		int operator<=( Fixed const & rhs) const;
+		int operator==( Fixed const & rhs) const;
+		int operator!=( Fixed const & rhs) const;
 		
+		// + - * /
 
 	private:
 		int	fixed_point_value;
@@ -57,5 +65,6 @@ class	Fixed
 };
 
 std::ostream & operator<<( std::ostream & o, Fixed const & rhs);
+
 
 #endif

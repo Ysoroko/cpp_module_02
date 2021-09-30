@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 14:08:17 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/09/30 12:04:20 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/09/30 14:12:29 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,6 @@
 // Destructor called
 // Destructor called
 // Destructor called
-
-
-/* Fixed a;
-Fixed const b(10);
-Fixed const c(42.42f);
-Fixed const d(b);
-a = Fixed(1234.4321f);
-std::cout << "a is " << a << std::endl;
-std::cout << "b is " << b << std::endl;
-std::cout << "c is " << c << std::endl;
-std::cout << "d is " << d << std::endl;
-std::cout << "a is " << a.toInt() << " as integer" << std::endl;
-std::cout << "b is " << b.toInt() << " as integer" << std::endl;
-std::cout << "c is " << c.toInt() << " as integer" << std::endl;
-std::cout << "d is " << d.toInt() << " as integer" << std::endl; */
 
 int Fixed::getRawBits( void ) const
 {
@@ -82,6 +67,10 @@ Fixed & Fixed::operator=( Fixed const & rhs)
 	setRawBits(rhs.getRawBits());
 	return (*this);
 }
+
+//-----------------------------------------------------------------------------------
+// EX 01
+//-----------------------------------------------------------------------------------
 
 // INT constructor
 Fixed::Fixed(int int_arg)
@@ -124,4 +113,50 @@ std::ostream & operator<<( std::ostream & o, Fixed const & rhs)
 	//std::cout << std:: endl << "TOINT: " << rhs.toInt() << std::endl;
 	//std::cout << std:: endl << "TOFLOAT: " << rhs.toFloat() << std::endl;
 	return (o);
+}
+
+//-----------------------------------------------------------------------------------
+// EX 02
+//-----------------------------------------------------------------------------------
+
+int Fixed::operator>( Fixed const & rhs) const
+{
+	if (this->getRawBits() > rhs.getRawBits())
+		return (1);
+	return (0);
+}
+
+int Fixed::operator<( Fixed const & rhs) const
+{
+	if (this->getRawBits() < rhs.getRawBits())
+		return (1);
+	return (0);
+}
+
+int Fixed::operator>=( Fixed const & rhs) const
+{
+	if (this->getRawBits() >= rhs.getRawBits())
+		return (1);
+	return (0);
+}
+
+int Fixed::operator<=( Fixed const & rhs) const
+{
+	if (this->getRawBits() <= rhs.getRawBits())
+		return (1);
+	return (0);
+}
+
+int Fixed::operator==( Fixed const & rhs) const
+{
+	if (this->getRawBits() == rhs.getRawBits())
+		return (1);
+	return (0);
+}
+
+int Fixed::operator!=( Fixed const & rhs) const
+{
+	if (this->getRawBits() != rhs.getRawBits())
+		return (1);
+	return (0);
 }
