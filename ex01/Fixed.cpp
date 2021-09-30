@@ -6,11 +6,12 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 14:08:17 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/09/29 14:54:18 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/09/30 11:03:04 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+#include <cmath>
 
 // Default constructor called
 // Int constructor called
@@ -32,6 +33,21 @@
 // Destructor called
 // Destructor called
 // Destructor called
+
+
+/* Fixed a;
+Fixed const b(10);
+Fixed const c(42.42f);
+Fixed const d(b);
+a = Fixed(1234.4321f);
+std::cout << "a is " << a << std::endl;
+std::cout << "b is " << b << std::endl;
+std::cout << "c is " << c << std::endl;
+std::cout << "d is " << d << std::endl;
+std::cout << "a is " << a.toInt() << " as integer" << std::endl;
+std::cout << "b is " << b.toInt() << " as integer" << std::endl;
+std::cout << "c is " << c.toInt() << " as integer" << std::endl;
+std::cout << "d is " << d.toInt() << " as integer" << std::endl; */
 
 int Fixed::getRawBits( void ) const
 {
@@ -67,31 +83,50 @@ Fixed & Fixed::operator=( Fixed const & rhs)
 	return (*this);
 }
 
+// INT constructor
 Fixed::Fixed(int int_arg)
 {
 	std::cout << "Int constructor called" << std::endl;
-	this->fixed_point_value = int_arg << this->n_fract_bits;
+	setRawBits(int_arg);
 }
 
+// FLOAT constructor
+// https://embeddedartistry.com/blog/2018/07/12/simple-fixed-point-conversion-in-c/
+// Calculate x = floating_input * 2^(fractional_bits)
+// Round x to the nearest whole number (e.g. round(x))
+// Store the rounded x in an integer container
 Fixed::Fixed(float float_arg)
 {
+	float	x = float_arg * (2^(this->n_fract_bits));
+	int		y = roundf(x);
+
+	this->setRawBits(y);
 	std::cout << "Float constructor called" << std::endl;
-	this->fixed_point_value = (int)(float_arg);
+	this->fixed_point_value = static_cast<int>(float_arg);
 }
 
+// We take the input value and divide it by (2fractional_bits), putting the result into a float
 float Fixed::toFloat(void) const
 {
-	return ((float)(this->getRawBits()));
+	return ((double)this->getRawBits() / (double)(1 << this->n_fract_bits));
 }
 
+//fix >> FIXED_POINT
 int Fixed::toInt(void) const
 {
-	return ((int)(this->getRawBits()));
+	return (this->getRawBits() >> this->n_fract_bits);
 }
 
 // << operator overload (not a member function!)
 std::ostream & operator<<( std::ostream & o, Fixed const & rhs)
 {
-	o << rhs.toFloat();
+	std::string dot = "";
+	std::string str = "";
+	if (rhs.toInt())
+	{
+		dot = ".";
+		str = std::to_string(rhs.toInt());
+	}
+	o << rhs.getRawBits() << dot << str;
 	return (o);
 }
