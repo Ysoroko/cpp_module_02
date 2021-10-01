@@ -6,31 +6,51 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 14:08:05 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/09/30 16:17:01 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/10/01 14:31:36 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Fixed.hpp"
-
-// 0
-// 0.00390625
-// 0.00390625
-// 0.00390625
-// 0.0078125
-// 10.1016
-// 10.1016
+#include "Point.hpp"
 
 int main(void)
 {
-	Fixed a;
-	Fixed const b(Fixed(5.05f) * Fixed(2));
-	std::cout << a << std::endl; // 0
-	std::cout << ++a << std::endl; // 0.00390625
-	std::cout << a << std::endl; // 0.00390625
-	std::cout << a++ << std::endl; // 0.00390625
-	std::cout << a << std::endl; // 0.0078125
-	std::cout << b << std::endl; // 10.1016
-	std::cout << Fixed::max(a, b) << std::endl; // 10.1016
+	
+	Point P1; //default constructor P1 = (0 ; 0)
+	Point P2(4.18, 3.02); // float constructor P2 = (4.18 ; 3.02)
+	Point P3(P2); // copy constructor P3 = P2 = (4.18 ; 3.02)
+	Point P4(94.16, 100.12);
+	Point P5(2.56, 2.08);
+	
+	//2.56 ; 2.08 par of the vertex
+	Point Ta(0, 0);
+	Point Tb(5.12, 4.16);
+	Point Tc(1.18, -6.49);
+
+	Point Tx(0, 3.02);
+	Point Ty(5, 3.02);
+	Point Tz(2.5, 0);
+
+	// One of the vertexes
+	std::cout << "P1: should be false" << std::endl;
+	std::cout << bsp(Ta, Tb, Tc, P1) << std::endl;
+
+	// Inside the triangle
+	std::cout << "P2: should be true" << std::endl;
+	std::cout << bsp(Ta, Tb, Tc, P2) << std::endl;
+	
+	// On the edge
+	std::cout << "P3: should be false" << std::endl;
+	std::cout << bsp(Tx, Ty, Tz, P3) << std::endl;
+
+	// Outside the triangle
+	std::cout << "P4: should be false" << std::endl;
+	std::cout << bsp(Ta, Tb, Tc, P4) << std::endl;
+
+	// Outside the triangle
+	std::cout << "P5: should be false" << std::endl;
+	std::cout << bsp(Ta, Tb, Tc, P5) << std::endl;
 	return 0; 
 }
+

@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 11:39:54 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/10/01 12:10:34 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/10/01 14:03:58 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Point
 		~Point();
 		Point(Point const & p);
 		Point(float const x, float const y);
-		Point & operator=( Point & rhs);
+		//Point & operator=( Point & rhs);
 		void	setX(Fixed f);
 		void	setY(Fixed f);
 		Fixed	getX( void );
@@ -33,5 +33,6 @@ class Point
 		Fixed	const y;
 };
 
+bool bsp( Point const a, Point const b, Point const c, Point const point);
 
 #endif

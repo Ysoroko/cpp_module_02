@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/27 14:07:34 by ysoroko           #+#    #+#              #
-#    Updated: 2021/09/30 13:55:59 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/10/01 14:03:32 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,8 @@ NAME		=	ex02
 
 SRC			=	main.cpp \
 				Fixed.cpp \
+				Point.cpp \
+				bsp.cpp
 
 OBJS		=	$(SRC:.cpp=.o)
 
