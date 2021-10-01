@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 14:08:05 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/10/01 14:31:36 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/10/01 16:17:36 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,23 +33,33 @@ int main(void)
 	Point Tz(2.5, 0);
 
 	// One of the vertexes
+	std::cout << std::endl;
 	std::cout << "P1: should be false" << std::endl;
+	std::cout << "x: " << P1.getX() << " y: " << P1.getY() << std::endl;
 	std::cout << bsp(Ta, Tb, Tc, P1) << std::endl;
 
 	// Inside the triangle
+	std::cout << std::endl;
 	std::cout << "P2: should be true" << std::endl;
+	std::cout << "x: " << P2.getX() << " y: " << P2.getY() << std::endl;
 	std::cout << bsp(Ta, Tb, Tc, P2) << std::endl;
 	
 	// On the edge
+	std::cout << std::endl;
 	std::cout << "P3: should be false" << std::endl;
+	std::cout << "x: " << P3.getX() << " y: " << P3.getY() << std::endl;
 	std::cout << bsp(Tx, Ty, Tz, P3) << std::endl;
 
 	// Outside the triangle
+	std::cout << std::endl;
 	std::cout << "P4: should be false" << std::endl;
+	std::cout << "x: " << P4.getX() << " y: " << P4.getY() << std::endl;
 	std::cout << bsp(Ta, Tb, Tc, P4) << std::endl;
 
 	// Outside the triangle
+	std::cout << std::endl;
 	std::cout << "P5: should be false" << std::endl;
+	std::cout << "x: " << P5.getX() << " y: " << P5.getY() << std::endl;
 	std::cout << bsp(Ta, Tb, Tc, P5) << std::endl;
 	return 0; 
 }
