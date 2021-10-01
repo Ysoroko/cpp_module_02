@@ -6,33 +6,20 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 14:08:17 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/09/30 16:47:26 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/10/01 11:36:33 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <cmath>
 
-// Default constructor called
-// Int constructor called
-// Float constructor called
-// Copy constructor called
-// Assignation operator called
-// Float constructor called
-// Assignation operator called
-// Destructor called
-// a is 1234.43
-// b is 10
-// c is 42.4219
-// d is 10
-// a is 1234 as integer
-// b is 10 as integer
-// c is 42 as integer
-// d is 10 as integer
-// Destructor called
-// Destructor called
-// Destructor called
-// Destructor called
+// 0
+// 0.00390625
+// 0.00390625
+// 0.00390625
+// 0.0078125
+// 10.1016
+// 10.1016
 
 int Fixed::getRawBits( void ) const
 {
@@ -47,23 +34,19 @@ void	Fixed::setRawBits( int const raw )
 Fixed::Fixed()
 {
 	this->fixed_point_value = 0;
-	std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::~Fixed()
 {
-	std::cout << "Destructor called" << std::endl;
 }
 
 Fixed::Fixed(Fixed const & src)
 {
-	std::cout << "Copy constructor called" << std::endl;
 	*this = src;
 }
 
 Fixed & Fixed::operator=( Fixed const & rhs)
 {
-	std::cout << "Assignation operator called" << std::endl;
 	setRawBits(rhs.getRawBits());
 	return (*this);
 }
@@ -75,7 +58,6 @@ Fixed & Fixed::operator=( Fixed const & rhs)
 // INT constructor
 Fixed::Fixed(int int_arg)
 {
-	std::cout << "Int constructor called" << std::endl;
 	setRawBits(int_arg << this->n_fract_bits);
 }
 
@@ -86,7 +68,6 @@ Fixed::Fixed(int int_arg)
 // Store the rounded x in an integer container
 Fixed::Fixed(float float_arg)
 {
-	std::cout << "Float constructor called" << std::endl;
 	this->setRawBits((int)roundf(float_arg * (1 << this->n_fract_bits)));
 }
 
@@ -166,28 +147,28 @@ int Fixed::operator!=( Fixed const & rhs) const
 // + - * /
 Fixed Fixed::operator+( Fixed const & rhs) const
 {
-	Fixed ret(this->getRawBits() + rhs.getRawBits());
+	Fixed ret(this->toFloat() + rhs.toFloat());
 	
 	return (ret);
 }
 
 Fixed Fixed::operator-( Fixed const & rhs) const
 {
-	Fixed ret(this->getRawBits() - rhs.getRawBits());
+	Fixed ret(this->toFloat() - rhs.toFloat());
 	
 	return (ret);
 }
 
 Fixed Fixed::operator*( Fixed const & rhs) const
 {
-	Fixed ret(this->getRawBits() * rhs.getRawBits());
+	Fixed ret(this->toFloat() * rhs.toFloat());
 	
 	return (ret);
 }
 
 Fixed Fixed::operator/( Fixed const & rhs) const
 {
-	Fixed ret(this->getRawBits() / rhs.getRawBits());
+	Fixed ret(this->toFloat() / rhs.toFloat());
 	
 	return (ret);
 }
@@ -197,7 +178,7 @@ Fixed Fixed::operator/( Fixed const & rhs) const
 // F++ ++F F-- --F
 Fixed & Fixed::operator++( void ) // Prefix (++F)
 {
-	this->fixed_point_value -= 1;
+	this->fixed_point_value += 1;
 	return (*this);
 }
 
