@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 14:08:05 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/10/01 16:46:03 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/10/02 13:25:08 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int main(void)
 	Point P3(P2); // copy constructor P3 = P2 = (4.18 ; 3.02)
 	Point P4(94.16, 100.12);
 	Point P5(2.56, 2.08);
+	Point P(1.5, 1.5);
+	Point P6 = P;
 	
 	//2.56 ; 2.08 par of the vertex
 	Point Tc(0, 0);
@@ -61,6 +63,12 @@ int main(void)
 	std::cout << "P5: on the edge, should be false" << std::endl;
 	std::cout << "x: " << P5.getX() << " y: " << P5.getY() << std::endl;
 	std::cout << bsp(Ta, Tb, Tc, P5) << std::endl;
+
+	// Inside
+	std::cout << std::endl;
+	std::cout << "P6: inside, should be true" << std::endl;
+	std::cout << "x: " << P6.getX() << " y: " << P6.getY() << std::endl;
+	std::cout << bsp(Tx, Ty, Tz, P6) << std::endl;
 	return 0; 
 }
 
