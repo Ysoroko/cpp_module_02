@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 11:44:04 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/10/01 16:46:50 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/10/02 14:56:44 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,20 @@
 //				(By - Ay) * (Cx - Ax) - (Bx - Ax) * (Cy - Ay)
 Fixed	*get_w1( Point const a, Point const b, Point const c, Point const p)
 {
-	Point Acopy(a);
-	Point Bcopy(b);
-	Point Ccopy(c);
-	Point Pcopy(p);
-	float Ax = Acopy.getX().toFloat();
-	float Ay = Acopy.getY().toFloat();
-	float Bx = Bcopy.getX().toFloat();
-	float By = Bcopy.getY().toFloat();
-	float Cx = Ccopy.getX().toFloat();
-	float Cy = Ccopy.getY().toFloat();
-	float Px = Pcopy.getX().toFloat();
-	float Py = Pcopy.getY().toFloat();
+	Fixed Ax = a.getX();
+	Fixed Ay = a.getY();
+	Fixed Bx = b.getX();
+	Fixed By = b.getY();
+	Fixed Cx = c.getX();
+	Fixed Cy = c.getY();
+	Fixed Px = p.getX();
+	Fixed Py = p.getY();
 
 	//std::cout << "Ax: " << Ax << " Ay: " << Ay << " Bx: " << Bx << " By: " << By << " Cx: " << Cx << " Cy: " << Cy << std::endl;
 
-	float	num = (Ax * (Cy - Ay)) + (Py - Ay) * (Cx - Ax) - Px * (Cy - Ay);
-	float	denum = (By - Ay) * (Cx - Ax) - (Bx - Ax) * (Cy - Ay);
-	float	f = num / denum;
+	Fixed	num = (Ax * (Cy - Ay)) + (Py - Ay) * (Cx - Ax) - Px * (Cy - Ay);
+	Fixed	denum = (By - Ay) * (Cx - Ax) - (Bx - Ax) * (Cy - Ay);
+	Fixed	f = num / denum;
 	Fixed *w1 = new Fixed(f);
 
 	return (w1);
@@ -48,19 +44,13 @@ Fixed	*get_w1( Point const a, Point const b, Point const c, Point const p)
 //				Cy - Ay
 Fixed	*get_w2( Fixed w1, Point const a, Point const b, Point const c, Point const p)
 {
-	Point Acopy(a);
-	Point Bcopy(b);
-	Point Ccopy(c);
-	Point Pcopy(p);
-	float Ay = Acopy.getY().toFloat();
-	float By = Bcopy.getY().toFloat();
-	float Cy = Ccopy.getY().toFloat();
-	float Py = Pcopy.getY().toFloat();
+	Fixed Ay = a.getY();
+	Fixed By = b.getY();
+	Fixed Cy = c.getY();
+	Fixed Py = p.getY();
 
-	float w = w1.toFloat();
-
-	float	num = Py - Ay - w * (By - Ay);
-	float	denum = Cy - Ay;
+	Fixed	num = Py - Ay - w1 * (By - Ay);
+	Fixed	denum = Cy - Ay;
 	Fixed *w2 = new Fixed(num / denum);
 
 	return (w2);
