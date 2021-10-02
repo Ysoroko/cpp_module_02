@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 14:08:05 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/10/02 13:25:08 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/10/02 14:47:31 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ int main(void)
 	Point P3(P2); // copy constructor P3 = P2 = (4.18 ; 3.02)
 	Point P4(94.16, 100.12);
 	Point P5(2.56, 2.08);
-	Point P(1.5, 1.5);
-	Point P6 = P;
+	Point P(1.5, 1.5); 
+	Point P6 = P; // Assignation operator used
+	Point P7(-0.5, -0.5);
 	
 	//2.56 ; 2.08 par of the vertex
 	Point Tc(0, 0);
@@ -69,6 +70,12 @@ int main(void)
 	std::cout << "P6: inside, should be true" << std::endl;
 	std::cout << "x: " << P6.getX() << " y: " << P6.getY() << std::endl;
 	std::cout << bsp(Tx, Ty, Tz, P6) << std::endl;
+
+	// Outside
+	std::cout << std::endl;
+	std::cout << "P7: outside the triangle, should be false" << std::endl;
+	std::cout << "x: " << P7.getX() << " y: " << P7.getY() << std::endl;
+	std::cout << bsp(Tx, Ty, Tz, P7) << std::endl;
 	return 0; 
 }
 
