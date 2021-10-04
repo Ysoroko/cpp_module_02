@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 14:08:17 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/10/01 11:36:33 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/10/04 15:06:08 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,14 +208,28 @@ Fixed Fixed::operator--( int ) // Postfix (F--)
 
 // min & max
 
-Fixed Fixed::min(const Fixed & a, const Fixed & b)
+const Fixed & Fixed::min(const Fixed & a, const Fixed & b)
 {
 	if (a.getRawBits() < b.getRawBits())
 		return (a);
 	return (b);
 }
 	
-Fixed Fixed::max(const Fixed & a, const Fixed & b)
+const Fixed & Fixed::max(const Fixed & a, const Fixed & b)
+{
+	if (a.getRawBits() > b.getRawBits())
+		return (a);
+	return (b);
+}
+
+Fixed & Fixed::min(Fixed & a, Fixed & b)
+{
+	if (a.getRawBits() < b.getRawBits())
+		return (a);
+	return (b);
+}
+	
+Fixed & Fixed::max(Fixed & a, Fixed & b)
 {
 	if (a.getRawBits() > b.getRawBits())
 		return (a);

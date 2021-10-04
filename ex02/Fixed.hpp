@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 14:08:20 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/09/30 16:46:01 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/10/04 15:05:50 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,10 @@ class	Fixed
 		Fixed operator--( int n ); // Postfix (F--)
 
 		// min & max
-		static Fixed min(const Fixed & a, const Fixed & b );
-		static Fixed max(const Fixed & a, const Fixed & b );
+		static Fixed & min(Fixed & a, Fixed & b );
+		static Fixed & max(Fixed & a, Fixed & b );
+		static const Fixed & min(const Fixed & a, const Fixed & b );
+		static const Fixed & max(const Fixed & a, const Fixed & b );
 
 	private:
 		int	fixed_point_value;
