@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 14:08:05 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/10/02 14:58:27 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/11/19 14:09:50 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,16 @@
 
 int main(void)
 {
-	
 	Point P1; //default constructor P1 = (0 ; 0)
-	Point P2(4.18, 3.02); // float constructor P2 = (4.18 ; 3.02)
+	Point P2(Fixed(4.18f), Fixed(3.02f)); // Fixed constructor P2 = (4.18 ; 3.02)
 	Point P3(P2); // copy constructor P3 = P2 = (4.18 ; 3.02)
-	Point P4(94.16, 100.12);
-	Point P5(2.56, 2.08);
-	Point P(1.5, 1.5); 
+	Point P4(Fixed(94.16f), Fixed(100.12f));
+	Point P5(Fixed(2.56f), Fixed(2.08f));
+	Point P(Fixed(1.5f), Fixed(1.5f)); 
 	Point P6 = P; // Assignation operator used
-	Point P7(-0.5, -0.5);
+	Point P7(Fixed(-0.5f), Fixed(-0.5f));
 	
-	//2.56 ; 2.08 par of the vertex
+	//2.56 ; 2.08 part of the vertex
 	Point Tc(0, 0);
 	Point Ta(5.12, 4.16);
 	Point Tb(1.18, -6.49);

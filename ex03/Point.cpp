@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 11:46:33 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/10/05 14:15:05 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/11/19 14:04:55 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ Point::Point(Point const & p): x(p.getX()), y(p.getY())
 }
 
 Point::Point(float const x, float const y): x(x), y(y)
+{
+}
+
+Point::Point(Fixed const x, Fixed const y): x(x), y(y)
 {
 }
 
