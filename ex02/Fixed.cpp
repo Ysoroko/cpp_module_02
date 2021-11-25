@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 14:08:17 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/10/04 15:06:08 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/11/25 13:35:58 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,7 @@ Fixed Fixed::operator-( Fixed const & rhs) const
 Fixed Fixed::operator*( Fixed const & rhs) const
 {
 	Fixed ret(this->toFloat() * rhs.toFloat());
-	
+
 	return (ret);
 }
 
@@ -210,28 +210,28 @@ Fixed Fixed::operator--( int ) // Postfix (F--)
 
 const Fixed & Fixed::min(const Fixed & a, const Fixed & b)
 {
-	if (a.getRawBits() < b.getRawBits())
+	if (a < b)
 		return (a);
 	return (b);
 }
 	
 const Fixed & Fixed::max(const Fixed & a, const Fixed & b)
 {
-	if (a.getRawBits() > b.getRawBits())
+	if (a > b)
 		return (a);
 	return (b);
 }
 
 Fixed & Fixed::min(Fixed & a, Fixed & b)
 {
-	if (a.getRawBits() < b.getRawBits())
+	if (a < b)
 		return (a);
 	return (b);
 }
 	
 Fixed & Fixed::max(Fixed & a, Fixed & b)
 {
-	if (a.getRawBits() > b.getRawBits())
+	if (a > b)
 		return (a);
 	return (b);
 }
