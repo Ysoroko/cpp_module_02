@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 14:08:17 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/09/28 16:14:14 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/11/25 13:14:20 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int Fixed::getRawBits( void ) const
 
 void	Fixed::setRawBits( int const raw )
 {
+	std::cout << "setRawBits member function called" << std::endl;
 	this->fixed_point_value = raw;
 }
 
