@@ -1,4 +1,5 @@
 # cpp_module_02
+Introduction to C++
 
 ### The project cpp_module_02 covers:
 
